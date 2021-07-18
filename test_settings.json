@@ -1,0 +1,14 @@
+{
+  "result_folder": "MBRS_256_m256/",
+  "model_epoch": 42,
+  "with_diffusion": false,
+  "strength_factor": 1,
+  "dataset_path": "datasets_imagenet/",
+  "H": 256,
+  "W": 256,
+  "message_length": 256,
+  "save_images_number": 4,
+  "noise_layers": [
+    "JpegTest(50)"
+  ]
+}

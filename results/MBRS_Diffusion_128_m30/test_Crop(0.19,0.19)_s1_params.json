@@ -1,0 +1,14 @@
+{
+  "result_folder": "MBRS_Diffusion_128_m30/",
+  "model_epoch": 114,
+  "with_diffusion": true,
+  "strength_factor": 1,
+  "dataset_path": "datasets_imagenet/",
+  "H": 128,
+  "W": 128,
+  "message_length": 30,
+  "save_images_number": 4,
+  "noise_layers": [
+    "Crop(0.19,0.19)"
+  ]
+}
