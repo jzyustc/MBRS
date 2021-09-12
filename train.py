@@ -1,3 +1,4 @@
+from torch.utils.data import DataLoader
 from utils import *
 from network.Network import *
 
@@ -11,9 +12,11 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 network = Network(H, W, message_length, noise_layers, device, batch_size, lr, with_diffusion, only_decoder)
 
-dataloader = Dataloader(batch_size, dataset_path, H=H, W=W)
-train_dataloader = dataloader.load_train_data()
-val_dataloader = dataloader.load_val_data()
+train_dataset = MBRSDataset(os.path.join(dataset_path, "train"), H, W)
+train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=0, pin_memory=True)
+
+val_dataset = MBRSDataset(os.path.join(dataset_path, "validation"), H, W)
+val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=0, pin_memory=True)
 
 if train_continue:
 	EC_path = "results/" + train_continue_path + "/models/EC_" + str(train_continue_epoch) + ".pth"
@@ -85,7 +88,7 @@ for epoch in range(epoch_number):
 
 	start_time = time.time()
 
-	saved_iterations = np.random.choice(np.arange(len(val_dataloader)), size=save_images_number, replace=False)
+	saved_iterations = np.random.choice(np.arange(len(val_dataset)), size=save_images_number, replace=False)
 	saved_all = None
 
 	num = 0
