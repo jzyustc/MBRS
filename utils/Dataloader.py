@@ -43,6 +43,8 @@ class MBRSDataset(Dataset):
 			image = self.transform_image(image)
 			if image is not None:
 				return image
+			# print("dataloader : skip index", index)
+			index += 1
 
 	def __len__(self):
 		return len(self.list)

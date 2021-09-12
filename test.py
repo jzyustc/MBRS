@@ -14,7 +14,7 @@ network = Network(H, W, message_length, noise_layers, device, batch_size, lr, wi
 EC_path = result_folder + "models/EC_" + str(model_epoch) + ".pth"
 network.load_model_ed(EC_path)
 
-test_dataset = MBRSDataset(os.path.join(dataset_path, "validation"), H, W)
+test_dataset = MBRSDataset(os.path.join(dataset_path, "test"), H, W)
 test_dataloader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=0, pin_memory=True)
 
 print("\nStart Testing : \n\n")
