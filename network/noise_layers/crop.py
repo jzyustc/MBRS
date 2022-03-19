@@ -51,8 +51,9 @@ class Cropout(nn.Module):
 
 		h_start, h_end, w_start, w_end = get_random_rectangle_inside(image.shape, self.height_ratio,
 																	 self.width_ratio)
-		cover_image[:, :, h_start: h_end, w_start: w_end] = image[:, :, h_start: h_end, w_start: w_end]
-		return cover_image
+		output = cover_image.clone()
+		output[:, :, h_start: h_end, w_start: w_end] = image[:, :, h_start: h_end, w_start: w_end]
+		return output
 
 class Dropout(nn.Module):
 
