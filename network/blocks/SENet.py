@@ -27,7 +27,7 @@ class BasicBlock(nn.Module):
 			nn.AdaptiveAvgPool2d((1, 1)),
 			nn.Conv2d(in_channels=out_channels, out_channels=out_channels // r, kernel_size=1, bias=False),
 			nn.ReLU(inplace=True),
-			nn.Conv2d(in_channels=out_channels, out_channels=out_channels // r, kernel_size=1, bias=False),
+			nn.Conv2d(in_channels=out_channels // r, out_channels=out_channels, kernel_size=1, bias=False),
 			nn.Sigmoid()
 		)
 
