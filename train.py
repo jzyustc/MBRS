@@ -88,7 +88,7 @@ for epoch in range(epoch_number):
 
 	start_time = time.time()
 
-	saved_iterations = np.random.choice(np.arange(len(val_dataset)), size=save_images_number, replace=False)
+	saved_iterations = np.random.choice(np.arange(len(val_dataloader)), size=save_images_number, replace=False)
 	saved_all = None
 
 	num = 0
